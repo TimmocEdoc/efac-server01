@@ -39,4 +39,10 @@ public class CategoryController {
         categoryService.SaveCategory(category);
         return ResponseEntity.ok("success!");
     }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteCategory(@PathVariable Integer id) {
+        categoryService.DeleteCategory(id);
+        return ResponseEntity.ok("success!");
+    }
 }

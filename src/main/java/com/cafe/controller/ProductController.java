@@ -3,6 +3,7 @@ package com.cafe.controller;
 import com.cafe.entity.Category;
 import com.cafe.entity.Product;
 import com.cafe.service.ProductService;
+import jdk.jfr.internal.Repository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,12 @@ public class ProductController {
     @RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateProduct(@Valid @RequestBody Product product, @PathVariable Integer id) {
         productService.SaveProduct(product, id);
+        return ResponseEntity.ok("success!");
+    }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteProduct(@PathVariable String id) {
+        productService.DeleteProduct(id);
         return ResponseEntity.ok("success!");
     }
 }

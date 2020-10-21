@@ -5,6 +5,7 @@ import com.cafe.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -27,6 +28,8 @@ public class CategoryService {
     }
 
     public void DeleteCategory(Integer id){
+        Optional<Category> category = repository.findById(id);
+        category.get().setProducts(null);
         repository.deleteById(id);
     }
 }

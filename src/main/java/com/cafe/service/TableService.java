@@ -30,6 +30,8 @@ public class TableService {
     }
 
     public void DeleteTable(Integer id){
+        Optional<ATable> table = repository.findById(id);
+        table.get().setOrders(null);
         repository.deleteById(id);
     }
 }

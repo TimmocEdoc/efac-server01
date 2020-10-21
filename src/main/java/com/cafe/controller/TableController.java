@@ -39,4 +39,10 @@ public class TableController {
         tableService.SaveTable(table);
         return ResponseEntity.ok("success!");
     }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteTable(@PathVariable Integer id) {
+        tableService.DeleteTable(id);
+        return ResponseEntity.ok("success!");
+    }
 }

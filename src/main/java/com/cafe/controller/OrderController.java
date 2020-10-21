@@ -9,10 +9,7 @@ import com.cafe.service.TableService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
@@ -41,5 +38,11 @@ public class OrderController {
         order.setTable(table);
         orderService.saveOrder(order);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteOrder(@PathVariable String id) {
+        orderService.DeleteOrder(id);
+        return ResponseEntity.ok("success!");
     }
 }

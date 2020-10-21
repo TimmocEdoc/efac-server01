@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static com.cafe.constant.OrderStatus.*;
 
@@ -35,5 +36,10 @@ public class OrderService {
         order.setTotal_price();
         order.setStatus(ACTIVE);
         orderRepository.save(order);
+    }
+
+    public void DeleteOrder(String id){
+        Optional<AOrder> order = orderRepository.findById(id);
+        order.get().setStatus(DELETED);
     }
 }
