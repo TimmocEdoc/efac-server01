@@ -3,7 +3,6 @@ package com.cafe.controller;
 import com.cafe.entity.Category;
 import com.cafe.entity.Product;
 import com.cafe.service.ProductService;
-import jdk.jfr.internal.Repository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
