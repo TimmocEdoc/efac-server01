@@ -27,11 +27,9 @@ public class Product {
     @NotNull
     @Column(name = PRICE, nullable = false)
     private Double price;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = ID)
     private Category category;
-    @JsonIgnore
     @OneToMany(mappedBy = "product")
     @Column(name = ORDERDETAILS)
     private Set<OrderDetails> orderDetails;

@@ -18,7 +18,6 @@ public class OrderDetails {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = OrderDetailsName.ID)
-    @JsonIgnore
     private String orderDetails_id;
     @ManyToOne
     @JoinColumn(name = ProductName.ID)

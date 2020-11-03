@@ -18,7 +18,6 @@ public class ATable {
     @NotNull
     @Column(name = NAME, length = 50, nullable = false)
     private String name;
-    @JsonIgnore
     @OneToMany(mappedBy = "table")
     @Column(name = ORDER)
     private Set<AOrder> orders;
