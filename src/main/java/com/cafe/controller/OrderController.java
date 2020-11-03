@@ -35,6 +35,7 @@ public class OrderController {
         AOrder order = new AOrder();
         order.setOrderDetails(orderForm.getOrderDetails());
         ATable table = tableService.GetTable(orderForm.getTable_name());
+        order.setName(table.getName() + orderForm.getOrderDetails().size());
         order.setTable(table);
         orderService.saveOrder(order);
         return new ResponseEntity<>(order, HttpStatus.CREATED);

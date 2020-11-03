@@ -2,7 +2,9 @@ package com.cafe.entity;
 
 
 import com.cafe.constant.entity.ProductName;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -28,8 +30,10 @@ public class Product {
     @Column(name = PRICE, nullable = false)
     private Double price;
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = ID)
     private Category category;
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     @Column(name = ORDERDETAILS)
     private Set<OrderDetails> orderDetails;

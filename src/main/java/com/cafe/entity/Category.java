@@ -2,6 +2,7 @@ package com.cafe.entity;
 
 import com.cafe.constant.entity.CategoryName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Category {
     @NotNull
     @Column(name = NAME, length = 50, nullable = false)
     private String name;
+    @JsonManagedReference
     @OneToMany(mappedBy = "category")
     @Column(name = PRODUCT)
     private Set<Product> products;

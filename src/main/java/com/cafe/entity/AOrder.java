@@ -2,8 +2,11 @@ package com.cafe.entity;
 
 import com.cafe.constant.entity.OrderName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -26,10 +29,12 @@ public class AOrder {
     @Column(name = NAME, length = 50, nullable = false)
     private String name;
     @Column(name = CREATED_AT)
+    @CreationTimestamp
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime created_at;
     @Column(name = UPDATED_AT)
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @UpdateTimestamp
     private LocalDateTime updated_at;
     @Column(name = STATUS)
     private String status;
