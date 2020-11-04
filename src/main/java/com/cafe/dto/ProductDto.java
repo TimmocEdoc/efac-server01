@@ -5,14 +5,14 @@ import com.cafe.entity.Product;
 
 public class ProductDto {
     private Product product;
-    private Category category;
-
-    public ProductDto(Product product, Category category) {
-        this.product = product;
-        this.category = category;
-    }
+    private String category_name;
 
     public ProductDto() {
+    }
+
+    public ProductDto(Product product, String category_name) {
+        this.product = product;
+        this.category_name = category_name;
     }
 
     public Product getProduct() {
@@ -23,11 +23,11 @@ public class ProductDto {
         this.product = product;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 }

@@ -2,6 +2,7 @@ package com.cafe.service;
 
 import com.cafe.dto.CategoryDto;
 import com.cafe.entity.Category;
+import com.cafe.entity.Product;
 import com.cafe.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,9 @@ public class CategoryService {
         for (Category c: repository.findAll()) {
             CategoryDto categoryDto = new CategoryDto();
             categoryDto.setCategory(c);
-            categoryDto.setProducts(c.getProducts());
+            for(Product p : c.getProducts()) {
+                categoryDto.getProduct_names().add(p.getName());
+            }
             categoryDtos.add(categoryDto);
         }
         return categoryDtos;
@@ -33,7 +36,9 @@ public class CategoryService {
         CategoryDto categoryDto = new CategoryDto();
         categoryDto.setCategory(c);
         if (c != null) {
-            categoryDto.setProducts(c.getProducts());
+            for(Product p : c.getProducts()) {
+                categoryDto.getProduct_names().add(p.getName());
+            }
         }
         return categoryDto;
     }

@@ -26,7 +26,7 @@ public class ProductService {
         for (Product p:repository.findAll()) {
             ProductDto productDto = new ProductDto();
             productDto.setProduct(p);
-            productDto.setCategory(p.getCategory());
+            productDto.setCategory_name(p.getCategory().getName());
             productDtos.add(productDto);
         }
         return productDtos;
@@ -37,7 +37,7 @@ public class ProductService {
         ProductDto productDto = new ProductDto();
         if(p != null) {
             productDto.setProduct(p);
-            productDto.setCategory(p.getCategory());
+            productDto.setCategory_name(p.getCategory().getName());
         }
         return productDto;
     }

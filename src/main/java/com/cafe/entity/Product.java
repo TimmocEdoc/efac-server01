@@ -30,6 +30,7 @@ public class Product {
     @Column(name = PRICE, nullable = false)
     private Double price;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = ID)
     private Category category;
     @JsonIgnore

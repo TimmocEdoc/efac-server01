@@ -8,14 +8,14 @@ import java.util.Set;
 
 public class CategoryDto {
     private Category category;
-    private Set<Product> products;
+    private List<String> product_names;
 
     public CategoryDto() {
     }
 
-    public CategoryDto(Category category, Set<Product> products) {
+    public CategoryDto(Category category, List<String> product_names) {
         this.category = category;
-        this.products = products;
+        this.product_names = product_names;
     }
 
     public Category getCategory() {
@@ -26,11 +26,11 @@ public class CategoryDto {
         this.category = category;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public List<String> getProduct_names() {
+        return product_names;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProduct_names(List<String> product_names) {
+        this.product_names = product_names;
     }
 }
