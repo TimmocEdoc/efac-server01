@@ -20,7 +20,6 @@ public class Category {
     @NotNull
     @Column(name = NAME, length = 50, nullable = false)
     private String name;
-    @JsonManagedReference
     @OneToMany(mappedBy = "category")
     @Column(name = PRODUCT)
     private Set<Product> products;

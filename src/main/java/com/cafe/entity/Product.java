@@ -30,10 +30,9 @@ public class Product {
     @Column(name = PRICE, nullable = false)
     private Double price;
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = ID)
     private Category category;
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "product")
     @Column(name = ORDERDETAILS)
     private Set<OrderDetails> orderDetails;

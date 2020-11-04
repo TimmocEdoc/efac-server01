@@ -1,5 +1,6 @@
 package com.cafe.controller;
 
+import com.cafe.dto.ProductDto;
 import com.cafe.entity.Category;
 import com.cafe.entity.Product;
 import com.cafe.service.ProductService;
@@ -19,12 +20,12 @@ public class ProductController {
     }
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public List<Product> ListProduct() {
+    public List<ProductDto> ListProduct() {
         return productService.ProductList();
     }
 
     @RequestMapping(value = "details/{id}", method = RequestMethod.GET)
-    public Product detailsProduct(@PathVariable String id) {
+    public ProductDto detailsProduct(@PathVariable String id) {
         return productService.GetProduct(id);
     }
 

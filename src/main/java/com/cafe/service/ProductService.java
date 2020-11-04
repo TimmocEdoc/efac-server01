@@ -1,11 +1,13 @@
 package com.cafe.service;
 
+import com.cafe.dto.ProductDto;
 import com.cafe.entity.Category;
 import com.cafe.entity.Product;
 import com.cafe.repository.CategoryRepository;
 import com.cafe.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +21,25 @@ public class ProductService {
         this.repository = repository;
     }
 
-    public List<Product> ProductList() {
-        return repository.findAll();
+    public List<ProductDto> ProductList() {
+        List<ProductDto> productDtos = new ArrayList<>();
+        for (Product p:repository.findAll()) {
+            ProductDto productDto = new ProductDto();
+            productDto.setProduct(p);
+            productDto.setCategory(p.getCategory());
+            productDtos.add(productDto);
+        }
+        return productDtos;
     }
 
-    public Product GetProduct(String id){
-        return repository.findById(id).orElse(null);
+    public ProductDto GetProduct(String id){
+        Product p = repository.findById(id).orElse(null);
+        ProductDto productDto = new ProductDto();
+        if(p != null) {
+            productDto.setProduct(p);
+            productDto.setCategory(p.getCategory());
+        }
+        return productDto;
     }
 
     public void SaveProduct(Product product, Integer id) {

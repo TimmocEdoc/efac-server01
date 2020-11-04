@@ -1,9 +1,11 @@
 package com.cafe.service;
 
+import com.cafe.dto.CategoryDto;
 import com.cafe.entity.Category;
 import com.cafe.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,12 +17,25 @@ public class CategoryService {
         this.repository = repository;
     }
 
-    public List<Category> CategoryList() {
-        return repository.findAll();
+    public List<CategoryDto> CategoryList() {
+        List<CategoryDto> categoryDtos = new ArrayList<>();
+        for (Category c: repository.findAll()) {
+            CategoryDto categoryDto = new CategoryDto();
+            categoryDto.setCategory(c);
+            categoryDto.setProducts(c.getProducts());
+            categoryDtos.add(categoryDto);
+        }
+        return categoryDtos;
     }
 
-    public Category GetCategory(int id){
-        return repository.findById(id).orElse(null);
+    public CategoryDto GetCategory(int id){
+        Category c = repository.findById(id).orElse(null);
+        CategoryDto categoryDto = new CategoryDto();
+        categoryDto.setCategory(c);
+        if (c != null) {
+            categoryDto.setProducts(c.getProducts());
+        }
+        return categoryDto;
     }
 
     public void SaveCategory(Category category) {
