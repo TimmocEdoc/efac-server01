@@ -23,9 +23,12 @@ public class CategoryService {
         for (Category c: repository.findAll()) {
             CategoryDto categoryDto = new CategoryDto();
             categoryDto.setCategory(c);
-            categoryDto.setProduct_names(null);
-            for(Product p : c.getProducts()) {
-                categoryDto.getProduct_names().add(p.getName());
+            List<String> product_name_list = new ArrayList<>();
+            categoryDto.setProduct_names(product_name_list);
+            if(!c.getProducts().isEmpty()) {
+                for(Product p : c.getProducts()) {
+                    categoryDto.getProduct_names().add(p.getName());
+                }
             }
             categoryDtos.add(categoryDto);
         }
