@@ -7,6 +7,7 @@ import com.cafe.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,11 +24,11 @@ public class CategoryService {
         for (Category c: repository.findAll()) {
             CategoryDto categoryDto = new CategoryDto();
             categoryDto.setCategory(c);
-            List<String> product_name_list = new ArrayList<>();
-            categoryDto.setProduct_names(product_name_list);
+            List<HashMap<String, String>> product_list = new ArrayList<>();
+            categoryDto.setProducts(product_list);
             if(!c.getProducts().isEmpty()) {
                 for(Product p : c.getProducts()) {
-                    categoryDto.getProduct_names().add(p.getName());
+                    categoryDto.getProducts().add(new HashMap<String, String>() {{ put(p.getId(), p.getName()); }});
                 }
             }
             categoryDtos.add(categoryDto);
@@ -41,7 +42,7 @@ public class CategoryService {
         categoryDto.setCategory(c);
         if (c != null) {
             for(Product p : c.getProducts()) {
-                categoryDto.getProduct_names().add(p.getName());
+                categoryDto.getProducts().add(new HashMap<String, String>() {{ put(p.getId(), p.getName()); }});
             }
         }
         return categoryDto;

@@ -27,6 +27,7 @@ public class ProductService {
             ProductDto productDto = new ProductDto();
             productDto.setProduct(p);
             productDto.setCategory_name(p.getCategory().getName());
+            productDto.setCategory_id(p.getCategory().getId());
             productDtos.add(productDto);
         }
         return productDtos;
@@ -38,6 +39,7 @@ public class ProductService {
         if(p != null) {
             productDto.setProduct(p);
             productDto.setCategory_name(p.getCategory().getName());
+            productDto.setCategory_id(p.getCategory().getId());
         }
         return productDto;
     }

@@ -3,19 +3,29 @@ package com.cafe.dto;
 import com.cafe.entity.Category;
 import com.cafe.entity.Product;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
 public class CategoryDto {
     private Category category;
-    private List<String> product_names;
+    private List<HashMap<String, String>> products = new ArrayList<>();
 
     public CategoryDto() {
     }
 
-    public CategoryDto(Category category, List<String> product_names) {
+    public CategoryDto(Category category, List<HashMap<String, String>> products) {
         this.category = category;
-        this.product_names = product_names;
+        this.products = products;
+    }
+
+    public List<HashMap<String, String>> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<HashMap<String, String>> products) {
+        this.products = products;
     }
 
     public Category getCategory() {
@@ -24,13 +34,5 @@ public class CategoryDto {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public List<String> getProduct_names() {
-        return product_names;
-    }
-
-    public void setProduct_names(List<String> product_names) {
-        this.product_names = product_names;
     }
 }
